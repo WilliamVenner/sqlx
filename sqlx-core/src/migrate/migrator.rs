@@ -95,7 +95,7 @@ impl Migrator {
         let mut conn = migrator.acquire().await?;
 
         // lock the database for exclusive access by the migrator
-        conn.lock().await?;
+        // conn.lock().await?;
 
         // creates [_migrations] table only if needed
         // eventually this will likely migrate previous versions of the table
@@ -133,7 +133,7 @@ impl Migrator {
 
         // unlock the migrator to allow other migrators to run
         // but do nothing as we already migrated
-        conn.unlock().await?;
+        // conn.unlock().await?;
 
         Ok(())
     }
